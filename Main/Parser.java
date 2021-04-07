@@ -52,8 +52,8 @@ public class Parser {
 			case change:
 				System.out.println("Open Price: $" + j.get("open"));
 				System.out.println("Close Price: $" + j.get("close"));
-				System.out.println("Change: $" + j.get("change"));
-				System.out.println("Change Percentage: " + j.get("changePercent"));
+				System.out.printf("Change: $%.2f %n", ((double)j.get("close")-(double)j.get("open")));
+				System.out.printf("Change Percentage: %.2f %n", 100*(((double)j.get("close")-(double)j.get("open"))/(double)j.get("close")));
 				break;
 			case yearlyPrice:
 				System.out.println("Latest Price: $" + j.get("latestPrice"));

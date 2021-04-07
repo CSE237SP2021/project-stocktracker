@@ -26,7 +26,7 @@ public class UI {
 	
 	
 	public static ParseOptions getOption() {
-		
+		while(true) {
 		System.out.println("Please select an option from the list:");
 	
 	
@@ -55,10 +55,37 @@ public class UI {
 			case 4:
 				return ParseOptions.newRequest;
 			default:
+				input = null;
 				getOption();
 		}
-		return null;	
+		
+	}
 	}
 	
-	//public static void 
+	public static boolean getNextCommand() {
+		System.out.println("Press 1 to return to option menu");
+		System.out.println("Press 2 to exit");
+		while (true) {
+		String input;
+		while (true) {
+			input = scanner.nextLine();
+			if (!input.isEmpty()) {
+				break;
+				
+			}
+		}
+		int c = Integer.parseInt(input);
+		if (c == 1) {
+			return true;
+		}
+		else if(c == 2){
+			return false;
+		}
+		else {
+			continue;
+		}
+		
+		}
+	}
+	
 }
