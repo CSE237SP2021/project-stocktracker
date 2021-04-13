@@ -17,8 +17,9 @@ public class Main {
 				}
 				else {
 					Parser.handleOption(json,option);
-					//option = 
-					//TODO: fix outputa
+					if (!UI.getNextCommand()) {
+						return;
+					}
 				}
 			}
 		}
