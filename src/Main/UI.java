@@ -22,20 +22,7 @@ public class UI {
 		}
 	}
 	
-	/**
-	 * Prompts user for stock data option, reads input, and sets teh parse option
-	 * @return the Parse option
-	 */
-	public static ParseOptions getOption() {
-		while(true) {
-		System.out.println("Please select an option from the list:");
-	
-	
-		System.out.println("1. Price");
-		System.out.println("2. Daily Change");
-		System.out.println("3. Yearly Price Information");
-		System.out.println("4. Request info for another stock");
-		
+	public static String takeUserInput() {
 
 		String input;
 		while (true) {
@@ -45,6 +32,28 @@ public class UI {
 				
 			}
 		}
+		return input;
+	}
+	
+	public static void printOptionsMenu() {
+		System.out.println("Please select an option from the list:");
+		
+		System.out.println("1. Price");
+		System.out.println("2. Daily Change");
+		System.out.println("3. Yearly Price Information");
+		System.out.println("4. Request info for another stock");
+	}
+	
+	/**
+	 * Prompts user for stock data option, reads input, and sets teh parse option
+	 * @return the Parse option
+	 */
+	public static ParseOptions getOption() {
+		while(true) {
+		printOptionsMenu();
+		
+		String input=takeUserInput();
+		
 		int c = Integer.parseInt(input);
 		switch (c) {
 			case 1:
@@ -71,14 +80,9 @@ public class UI {
 		System.out.println("Press 1 to return to option menu");
 		System.out.println("Press 2 to exit");
 		while (true) {
-		String input;
-		while (true) {
-			input = scanner.nextLine();
-			if (!input.isEmpty()) {
-				break;
-				
-			}
-		}
+		
+		String input=takeUserInput();
+		
 		int c = Integer.parseInt(input);
 		if (c == 1) {
 			return true;
