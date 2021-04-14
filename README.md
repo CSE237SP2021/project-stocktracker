@@ -4,7 +4,7 @@ We are creating an executable program that will return data about the stock mark
 
 Iteration 2:
 What user stories were completed this iteration?
-For this iteration, we focused on fixing our code based on the feedback we recieved last iteration. First, we focused on splitting up our main function and put them in different files. This allowed us to add more tests that we did not have during the first iteration. We also added a "dev" branch and other offshoot branches because our code was all in the master during the first iteration. 
+For this iteration, we focused on fixing our code based on the feedback we recieved last iteration. First, we focused on splitting up our main function and put them in different files. This allowed us to add more tests that we did not have during the first iteration. A new UI was implemented, now after a ticker is entered there are options for: price, daily change, yearly change and the option to enter a new ticker instead of just the price option. We also added a "dev" branch and other offshoot branches because our code was all in the master during the first iteration. 
 
 What user stories do you intend to complete next iteration?
 Since we focused on cleaning up our code this iteration, we still have many of the same goals that we had last time. Our code already returns the basic information about the different stocks, so we would like to allow the stock trader to get more in depth information about the stocks they input, like standard deviaiton or moving averages. 
