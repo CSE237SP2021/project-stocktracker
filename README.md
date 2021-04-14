@@ -10,7 +10,7 @@ What user stories do you intend to complete next iteration?
 Since we focused on cleaning up our code this iteration, we still have many of the same goals that we had last time. Our code already returns the basic information about the different stocks, so we would like to allow the stock trader to get more in depth information about the stocks they input, like standard deviaiton or moving averages. 
 
 Is there anything that you implemented but doesn't currently work?
-Everything should work. 
+While creating our tests, we ran into some issues with our UI Test and our Parser Test that we are still working through. Other than those tests, everything should work.  
 
 What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
 Run "bash run.sh" and the program will compile everything for you.
