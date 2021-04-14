@@ -1,4 +1,4 @@
-package Main;
+package  src.Main;
 import org.json.simple.JSONObject;
 
 public class Main {
