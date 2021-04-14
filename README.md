@@ -13,7 +13,7 @@ Is there anything that you implemented but doesn't currently work?
 Everything should work. 
 
 What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
-"java -cp "path to Jsonsimple.jar" Main.java"
+Run "bash run.sh" and the program will compile everything for you.
 
 Iteration 1:
 What user stories were completed this iteration?
