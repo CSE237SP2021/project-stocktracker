@@ -45,7 +45,7 @@ public class UI {
 	}
 	
 	/**
-	 * Prompts user for stock data option, reads input, and sets teh parse option
+	 * Prompts user for stock data option, reads input, and sets the parse option
 	 * @return the Parse option
 	 */
 	public static ParseOptions getOption() {
