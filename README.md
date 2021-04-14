@@ -10,10 +10,10 @@ What user stories do you intend to complete next iteration?
 Since we focused on cleaning up our code this iteration, we still have many of the same goals that we had last time. Our code already returns the basic information about the different stocks, so we would like to allow the stock trader to get more in depth information about the stocks they input, like standard deviaiton or moving averages. 
 
 Is there anything that you implemented but doesn't currently work?
-While creating our tests, we ran into some issues with our UI Test and our Parser Test that we are still working through. Other than those tests, everything should work.  
+While creating our tests, we ran into some issues with our UI Test and our Parser Test that we are still working through. Also, the dev branch has the updated Unit tests but the script is currently only working for the master branch (you can still run through eclipse in the dev branch though).  Other than that everything should work.
 
 What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
-Run "bash run.sh" and the program will compile everything for you.
+In the master branch, run "bash run.sh" and the program will compile and run everything for you.  
 
 Iteration 1:
 What user stories were completed this iteration?
