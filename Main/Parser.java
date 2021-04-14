@@ -10,7 +10,11 @@ public class Parser {
 	static JSONParser parser = new JSONParser();
 	
 	
-	
+	/**
+	 * Converts string returned from API call to a JSON object
+	 * @param s the string of stock data returned from the API call
+	 * @return a JSON object containing the stock data
+	 */
 	public static JSONObject convertToJson(String s) {
 		
 		try {
@@ -26,6 +30,10 @@ public class Parser {
 		return null;
 	}
 	
+	/**
+	 * Displays stock company name and current date and time
+	 * @param json the object returned from convertToJson function that contains stock info
+	 */
 	public static void displayBasicInfo(JSONObject json) {
 		// TODO: have to do something here if req not of type "book" (request and save all types or something)
 		try {
@@ -37,6 +45,11 @@ public class Parser {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Displays specific stock info based on user input
+	 * @param json the object returned from convertToJson function that contains stock info
+	 * @param option stock data option selected by the user
+	 */
 	
 	public static void handleOption(JSONObject json, ParseOptions option) {
 		JSONObject j = (JSONObject) json.get("quote");

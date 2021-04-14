@@ -5,7 +5,10 @@ public class UI {
 
 	public static Scanner scanner = new Scanner(System.in);
 
-	
+	/**
+	 * Prompts user for stock symbol and reads input
+	 * @return input if empty
+	 */
 	public static String getStockSymbol() {
 		System.out.println("Please enter a stock symbol:");
 		
@@ -19,7 +22,10 @@ public class UI {
 		}
 	}
 	
-	
+	/**
+	 * Prompts user for stock data option, reads input, and sets teh parse option
+	 * @return the Parse option
+	 */
 	public static ParseOptions getOption() {
 		while(true) {
 		System.out.println("Please select an option from the list:");
@@ -57,6 +63,10 @@ public class UI {
 	}
 	}
 	
+	/**
+	 * Prompts user with options after displaying selected info
+	 * @return true if they want to return to menu and false if they want to exit
+	 */
 	public static boolean getNextCommand() {
 		System.out.println("Press 1 to return to option menu");
 		System.out.println("Press 2 to exit");

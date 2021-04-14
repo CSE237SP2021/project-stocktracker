@@ -4,8 +4,6 @@ import org.json.simple.JSONObject;
 public class Main {
 
 	
-	
-	
 	public static void main(String[] args) {
 		while (true) {
 			
@@ -25,10 +23,8 @@ public class Main {
 		}
 	}
 	
-	
-	
-	
-	
+
+
 	public static JSONObject start() {
 		
 		String input = UI.getStockSymbol();
