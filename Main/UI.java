@@ -6,9 +6,6 @@ public class UI {
 	public static Scanner scanner = new Scanner(System.in);
 
 	
-	
-	
-	
 	public static String getStockSymbol() {
 		System.out.println("Please enter a stock symbol:");
 		
@@ -21,8 +18,6 @@ public class UI {
 			}
 		}
 	}
-	
-	
 	
 	
 	public static ParseOptions getOption() {

@@ -31,9 +31,7 @@ public class Main {
 	
 	public static JSONObject start() {
 		
-		
 		String input = UI.getStockSymbol();
-		
 		
 		String dataString = API.requestData(input, null);
 		
