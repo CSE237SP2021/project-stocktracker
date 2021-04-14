@@ -1,5 +1,5 @@
-package testing;
-import Main.*;
+package src.testing;
+import src.Main.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
