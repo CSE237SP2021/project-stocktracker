@@ -10,6 +10,13 @@ Is there anything that you implemented but doesn't currently work? While creatin
 
 What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!) In the master branch, run "bash run.sh" and the program will compile and run everything for you.
 
+Is there anything that you implemented but doesn't currently work?
+While creating our tests, we ran into some issues with our UI Test and our Parser Test that we are still working through. Also, the dev branch has the updated Unit tests but the script is currently only working for the master branch (you can still run through eclipse in the dev branch though).  Other than that everything should work.
+
+What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)
+In the master branch, run "bash run.sh" and the program will compile and run everything for you.  
+
+
 Iteration 1: What user stories were completed this iteration? For a trader, this program allows them to input a stock signal and learn information about that stock. This information includes the latest price of the stock and the highest and lowest prices allowing them to know what trades to place based on their own judgement.
 
 What user stories do you intend to complete next iteration? The user stories we intend to complete is to allow traders to gain more in depth information about stocks they are interested in, such as standard deviation or moving averages. This would allow the trader to gain more insight on the markets and better decide potential actions to take.
