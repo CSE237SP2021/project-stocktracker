@@ -1,7 +1,5 @@
 package src.Main;
-
 import org.jfree.chart.ChartFactory;
-
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
@@ -15,16 +13,29 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Vector;
-
 public class Grapher {
 
 	public static void makeGraph(Vector<Double> vals, Vector<Long> dates, String name) {
 		var series = new XYSeries("Price");
+		addDates(series, vals, dates);
+		System.out.println(series.getMinY());
+		var dataset = new XYSeriesCollection();
+		dataset.addSeries(series);
+
+		JFreeChart linechart = ChartFactory.createXYLineChart(name,"Date (Millis since 1/1/1970","Price",dataset);
+		XYPlot plot = linechart.getXYPlot(); 
+
+		setRange(plot, series);
+
+		saveChart(plot);
+
+	}
+
+	public static void addDates(var series, Vector<Double> vals, Vector<Long> dates) {
 		for (int i =0; i<vals.size(); i++) {
 			try {
 			series.add(dates.get(i),vals.get(i));
@@ -45,6 +56,9 @@ public class Grapher {
 		}
 		rangeAxis.setRange(min, series.getMaxY()+10);
 		plot.setRangeAxis(0,rangeAxis);
+	}
+
+	public static void saveChart(XYPlot plot) {
 		System.out.println("Enter the name of the file you would like to save to");
 		String file = UI.takeUserInput();
 		try {
@@ -53,9 +67,19 @@ public class Grapher {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
+	public static void setRange(XYPlot plot, var series) {
+		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
+		double min = series.getMinY()-10;
+		if (min < 0) {
+			min = 0;
+		}
+		rangeAxis.setRange(min, series.getMaxY()+10);
+		plot.setRangeAxis(0,rangeAxis);
+	}
+
 	static void parseData(JSONObject j, String name) {
 		JSONArray vals1 = (JSONArray) j.get("c");
 		JSONArray dates1 = (JSONArray) j.get("t");
@@ -84,4 +108,3 @@ public class Grapher {
 	}
 	
 }
-
