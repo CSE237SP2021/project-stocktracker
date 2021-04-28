@@ -33,7 +33,7 @@ public class Grapher {
 	public static void makeGraph(Vector<Double> vals, Vector<Long> dates, String name) {
 		XYSeries series = new XYSeries("Price");
 		addDates(series, vals, dates);
-		System.out.println(series.getMinY());
+		
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 		
