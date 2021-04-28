@@ -6,6 +6,4 @@ public enum ParseOptions {
 	yearlyPrice,
 	newRequest,
 	companyInfo
-	
-	
 }
