@@ -101,20 +101,21 @@ public class Parser {
 				System.out.println("IPO (Initial Public Offering): "+ j.get("ipo"));
 				break;
 			case profitLoss:
-				int shares=getShares();
-				double buyPrice=buyPrice();
-				double buyValue=shares*buyPrice;
-				double currentPrice=Double.parseDouble(j.get("c").toString());
-				double currentValue=shares*currentPrice;
-				double change=Math.abs(buyValue-currentValue);
+//				j = convertToJson(API.requestData(name, ReqOptions.quote));
+//				int shares=getShares();
+//				double buyPrice=buyPrice();
+//				double buyValue=shares*buyPrice;
+//				double currentPrice=(double)j.get("c");
+//				double currentValue=shares*currentPrice;
+//				double change=Math.abs(buyValue-currentValue);
 						
-				if(buyValue<currentValue) {
-					System.out.println("You made a profit of "+change);
+				double profitOrLoss=calculateProfitLoss(name);
+				if(profitOrLoss>=0) {
+					System.out.printf("You made a profit of $%.2f %n", profitOrLoss);
 				}
 				else {
-					System.out.println("You made a loss of "+change);
+					System.out.printf("You lost $%.2f %n", profitOrLoss*-1);
 				}
-				
 				
 				
 		default:
@@ -150,6 +151,17 @@ public class Parser {
 		}
 	}
 	
+	public static double calculateProfitLoss(String name) {
+		JSONObject j = null;
+		j = convertToJson(API.requestData(name, ReqOptions.quote));
+		int shares=getShares();
+		double buyPrice=buyPrice();
+		double buyValue=shares*buyPrice;
+		double currentPrice=(double)j.get("c");
+		double currentValue=shares*currentPrice;
+		double change=currentValue-buyValue;
+		return change;
+	}
 	
 	public static void displayCompanies(JSONObject json) {
 		
