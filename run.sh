@@ -1,3 +1,3 @@
-javac -cp lib/* ./src/Main/*.java
+javac -cp ".:./lib/*" src/Main/*.java
 
-java -cp "lib/*:src" Main.Main
+java -cp ".:./lib/*" src/Main/Main
