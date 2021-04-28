@@ -10,8 +10,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import src.Main.Parser;
-
 class ParserTest {
 //{"quote":{"symbol":"AAPL","companyName":"Apple Inc.","primaryExchange":"Nasdaq Global Select","sector":"Technology","calculationPrice":"close","open":126.5,"openTime":1617715802334,"close":227.01,"closeTime":1617739200337,"high":127.13,"low":120.64,"latestPrice":227.01,"latestSource":"Close","latestTime":"April 6, 2021","latestUpdate":1617739200337,"latestVolume":null,"iexRealtimePrice":null,"iexRealtimeSize":null,"iexLastUpdated":null,"delayedPrice":126.23,"delayedPriceTime":1617739199970,"extendedPrice":126.23,"extendedChange":-100.78,"extendedChangePercent":-0.44395,"extendedPriceTime":1617742800000,"previousClose":220.82,"change":null,"changePercent":null,"iexMarketPercent":null,"iexVolume":null,"avgTotalVolume":28048177,"iexBidPrice":null,"iexBidSize":null,"iexAskPrice":null,"iexAskSize":null,"marketCap":1025899051800,"peRatio":null,"week52High":228.22,"week52Low":120.64,"ytdChange":0.48276164267212823},"bids":[],"asks":[],"systemEvent":{}}
 	
@@ -168,4 +166,5 @@ class ParserTest {
 		
 		equals(outContent.toString());
 	}
+
 }
