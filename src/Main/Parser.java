@@ -1,5 +1,7 @@
 package src.Main;
 import java.util.Date;
+import java.util.Scanner;
+import java.lang.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONArray.*;
@@ -9,6 +11,7 @@ import org.json.simple.parser.ParseException;
 
 public class Parser {
 
+	public static Scanner scanner = new Scanner(System.in);
 	static JSONParser parser = new JSONParser();
 	
 	
@@ -53,6 +56,7 @@ public class Parser {
 	 * @param option stock data option selected by the user
 	 */
 	
+
 	public static void handleOption(String name, ParseOptions option) {
 		JSONObject j = null;
 		
@@ -96,17 +100,62 @@ public class Parser {
 				System.out.println("Outstanding Shares: "+ j.get("shareOutstanding"));
 				System.out.println("IPO (Initial Public Offering): "+ j.get("ipo"));
 				break;
-			default:
+			case profitLoss:
+						
+				double profitOrLoss=calculateProfitLoss(name);
+				if(profitOrLoss>=0) {
+					System.out.printf("You made a profit of $%.2f %n", profitOrLoss);
+				}
+				else {
+					System.out.printf("You lost $%.2f %n", profitOrLoss*-1);
+				}
+				
+		default:
 				
 			
 		}
 		
-		
 	}
 	
+	public static int getShares() {
+		System.out.println("Enter how many shares you own:");
+		String input;
+		while (true) {
+			input = scanner.nextLine();
+			if (!input.isEmpty()) {
+				return Integer.parseInt(input);
+				
+			}
+		}
+	}
 	
+
+	public static double buyPrice() {
+		System.out.println("Enter buy price:");
+		String input;
+		while (true) {
+			input = scanner.nextLine();
+			if (!input.isEmpty()) {
+				return Double.parseDouble(input);
+				
+			}
+		}
+	}
+	
+	public static double calculateProfitLoss(String name) {
+		JSONObject j = null;
+		j = convertToJson(API.requestData(name, ReqOptions.quote));
+		int shares=getShares();
+		double buyPrice=buyPrice();
+		double buyValue=shares*buyPrice;
+		double currentPrice=(double)j.get("c");
+		double currentValue=shares*currentPrice;
+		double change=currentValue-buyValue;
+		return change;
+	}
 	
 	public static void displayCompanies(JSONObject json) {
+		
 		int count = (int) json.get("count");
 		for (int i = 0; i < count; i++) {
 			System.out.println("Company: " + json.get("description"));
