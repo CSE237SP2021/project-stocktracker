@@ -54,7 +54,8 @@ public class UI {
 		System.out.println("2. Daily Change");
 		System.out.println("3. Yearly Price Information");
 		System.out.println("4. Company Info");
-		System.out.println("5. Request info for another stock");
+		System.out.println("5. Calculate Profit/Loss");
+		System.out.println("6. Request info for another stock");
 		
 	}
 	
@@ -79,7 +80,10 @@ public class UI {
 			case 4:
 				return ParseOptions.companyInfo;
 			case 5:
+				return ParseOptions.profitLoss;
+			case 6:
 				return ParseOptions.newRequest;
+			
 			default:
 				input = null;
 				getOption();
