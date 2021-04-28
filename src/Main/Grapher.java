@@ -70,7 +70,7 @@ public class Grapher {
 
 	}
 
-	public static void setRange(XYPlot plot, var series) {
+	public static void setRange(XYPlot plot, XYSeries series) {
 		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
 		double min = series.getMinY()-10;
 		if (min < 0) {
