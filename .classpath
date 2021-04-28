@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="lib/junit-jupiter-5.7.0.jar"/>
 	<classpathentry kind="lib" path="lib/junit-jupiter-engine-5.7.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="/Users/calvinmitchell/git/project-stockgraphing/lib/jfreechart-1.5.3.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

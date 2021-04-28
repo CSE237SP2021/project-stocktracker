@@ -5,6 +5,7 @@ public class Main {
 	public static String currentSymbol = "";
 	
 	public static void main(String[] args) {
+		
 		while (true) {
 			
 			start();

@@ -90,6 +90,7 @@ public class Parser {
 				System.out.printf("Yearly Change: $%.2f %n", (current -  first));
 				System.out.println("Highest Yearly Price: $" + minmax[1]);
 				System.out.println("Lowest Yearly Price: $" + minmax[0]);
+				UI.graphPrompt(j, name);
 				break;
 			case companyInfo:
 				j = convertToJson(API.requestData(name, ReqOptions.companyInfo));
