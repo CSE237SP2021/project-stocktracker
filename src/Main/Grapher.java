@@ -37,7 +37,7 @@ public class Grapher {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 		
-		JFreeChart linechart = ChartFactory.createXYLineChart(name,"Date (Millis since 1/1/1970","Price",dataset);
+		JFreeChart linechart = ChartFactory.createXYLineChart(name,"Date (Millis since 1/1/1970)","Price",dataset);
 		XYPlot plot = linechart.getXYPlot(); 
 		
 		setRange(plot, series);
