@@ -35,7 +35,7 @@ public class Grapher {
 
 	}
 
-	public static void addDates(var series, Vector<Double> vals, Vector<Long> dates) {
+	public static void addDates(XYSeries series, Vector<Double> vals, Vector<Long> dates) {
 		for (int i =0; i<vals.size(); i++) {
 			try {
 			series.add(dates.get(i),vals.get(i));
@@ -44,7 +44,7 @@ public class Grapher {
 				continue;
 			}
 		}
-		System.out.println(series.getMinY());
+		
 		var dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 		JFreeChart linechart = ChartFactory.createXYLineChart(name,"Date (Millis since 1/1/1970","Price",dataset);
