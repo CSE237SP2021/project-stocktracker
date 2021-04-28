@@ -4,6 +4,26 @@ import java.util.Scanner;
 public class UI {
 
 	public static Scanner scanner = new Scanner(System.in);
+	
+	
+	
+	public static boolean proceedToOptions(String name) {
+		System.out.println("Proceed to request data for " + name+"?");
+		System.out.println("1. Yes");
+		System.out.println("2. No");
+		int input = Integer.parseInt(takeUserInput());
+		if (input == 1) {
+			return true;
+		}
+		else if (input == 2) {
+			return false;
+		}
+		else {
+			System.out.println("Invalid option. Please enter 1 or 2");
+			proceedToOptions(name);
+		}
+		return false;
+	}
 
 	/**
 	 * Prompts user for stock symbol and reads input
@@ -12,6 +32,11 @@ public class UI {
 	public static String getStockSymbol() {
 		System.out.println("Please enter a stock symbol:");
 		
+		return takeUserInput();
+	}
+	
+	public static String takeUserInput() {
+
 		String input;
 		while (true) {
 			input = scanner.nextLine();
@@ -22,26 +47,15 @@ public class UI {
 		}
 	}
 	
-	public static String takeUserInput() {
-
-		String input;
-		while (true) {
-			input = scanner.nextLine();
-			if (!input.isEmpty()) {
-				break;
-				
-			}
-		}
-		return input;
-	}
-	
 	public static void printOptionsMenu() {
 		System.out.println("Please select an option from the list:");
 		
 		System.out.println("1. Price");
 		System.out.println("2. Daily Change");
 		System.out.println("3. Yearly Price Information");
-		System.out.println("4. Request info for another stock");
+		System.out.println("4. Company Info");
+		System.out.println("5. Request info for another stock");
+		
 	}
 	
 	/**
@@ -63,6 +77,8 @@ public class UI {
 			case 3:
 				return ParseOptions.yearlyPrice;
 			case 4:
+				return ParseOptions.companyInfo;
+			case 5:
 				return ParseOptions.newRequest;
 			default:
 				input = null;

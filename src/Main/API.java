@@ -15,18 +15,17 @@ import org.json.simple.parser.ParseException;
 
 public class API {
 	
-	public static String requestData(String symbol, String reqType) {
+	public static String requestData(String symbol, ReqOptions reqType) {
 		
 		
 		// Handling different request types in the future, defaults to "book" when passed null
-		reqType = reqType != null ? reqType : "book";
+		String url = setURL(symbol, reqType);
 		
 		
 		
 		HttpRequest req = HttpRequest.newBuilder()
-				.uri(URI.create("https://investors-exchange-iex-trading.p.rapidapi.com/stock/"+symbol+"/"+reqType))
-				.header("x-rapidapi-key", "a0e7aae970mshba06b82dc4aff3cp1667cdjsn66a8fb194136")
-				.header("x-rapidapi-host", "investors-exchange-iex-trading.p.rapidapi.com")
+				.uri(URI.create(url))
+				
 				.method("GET", HttpRequest.BodyPublishers.noBody())
 				.build();
 		try {
@@ -34,7 +33,8 @@ public class API {
 
 		
 			HttpResponse<String> response = HttpClient.newHttpClient().send(req, HttpResponse.BodyHandlers.ofString());
-			 return response.body().toString();
+			
+			return response.body().toString();
 		
 		
 		
@@ -48,6 +48,25 @@ public class API {
 			e.printStackTrace();
 		}
 		return "";
+	}
+	
+	public static String setURL(String symbol, ReqOptions reqType) {
+		ReqOptions o = reqType;
+		
+		switch (o) {
+			case quote:
+				return "https://finnhub.io/api/v1/quote?symbol="+ symbol +"&token=c1ebmhn48v6t1299jb6g";
+			case historical:
+				Long time =  System.currentTimeMillis()/1000L;
+				
+				Long time2 = time-(3153600000L/1000L);
+				return "https://finnhub.io/api/v1/stock/candle?symbol="+symbol+"&resolution=1&from="+time2+"&to="+time+"&token=c1ebmhn48v6t1299jb6g";
+			case companyInfo:
+				return "https://finnhub.io/api/v1/stock/profile2?symbol="+symbol+"&token=c1ebmhn48v6t1299jb6g";
+			default:
+				return "";
+		}
+		
 	}
 }
 

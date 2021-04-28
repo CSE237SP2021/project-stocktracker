@@ -1,6 +1,8 @@
 package src.Main;
 import java.util.Date;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONArray.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -51,27 +53,48 @@ public class Parser {
 	 * @param option stock data option selected by the user
 	 */
 	
-	public static void handleOption(JSONObject json, ParseOptions option) {
-		JSONObject j = (JSONObject) json.get("quote");
+	public static void handleOption(String name, ParseOptions option) {
+		JSONObject j = null;
 		
 		switch (option) {
 		
 		
 			case price:
-				System.out.println("Latest Price: $" + j.get("latestPrice"));
-				System.out.println("High: $" + j.get("high"));
-				System.out.println("Low: $" + j.get("low"));
+	
+				
+				j = convertToJson(API.requestData(name, ReqOptions.quote));
+				
+				System.out.println("Current Price: $" + j.get("c"));
+				System.out.println("Daily High: $" + j.get("h"));
+				System.out.println("Daily Low: $" + j.get("l"));
+				
 				break;
 			case change:
-				System.out.println("Open Price: $" + j.get("open"));
-				System.out.println("Close Price: $" + j.get("close"));
-				System.out.printf("Change: $%.2f %n", ((double)j.get("close")-(double)j.get("open")));
-				System.out.printf("Change Percentage: %.2f %n", 100*(((double)j.get("close")-(double)j.get("open"))/(double)j.get("close")));
+				j = convertToJson(API.requestData(name, ReqOptions.quote));
+				System.out.println("Open Price: $" + j.get("o"));
+				System.out.println("Close Price: $" + j.get("c"));
+				System.out.printf("Change: $%.2f %n", ((double)j.get("c")-(double)j.get("o")));
+				System.out.printf("Change Percentage: %.2f %n", 100*(((double)j.get("c")-(double)j.get("o"))/(double)j.get("c")));
 				break;
 			case yearlyPrice:
-				System.out.println("Latest Price: $" + j.get("latestPrice"));
-				System.out.println("Highest Yearly Price: $" + j.get("week52High"));
-				System.out.println("Lowest Yearly Price: $" + j.get("week52Low"));
+				j = convertToJson(API.requestData(name, ReqOptions.historical));
+				JSONArray prices = (JSONArray) j.get("c");
+				double[] minmax = findMinMax(prices);
+				double current = ((double)prices.get(prices.size()-1));
+				double first = ((double)prices.get(0));
+				System.out.println("Latest Price: $" + prices.get(prices.size()-1));
+				System.out.printf("Yearly Change: $%.2f %n", (current -  first));
+				System.out.println("Highest Yearly Price: $" + minmax[1]);
+				System.out.println("Lowest Yearly Price: $" + minmax[0]);
+				break;
+			case companyInfo:
+				j = convertToJson(API.requestData(name, ReqOptions.companyInfo));
+				System.out.println("Name: "+ j.get("name"));
+				System.out.println("Industry: "+ j.get("finnhubIndustry"));
+				System.out.println("Country: "+ j.get("country"));
+				System.out.println("Exchange: "+ j.get("exchange"));
+				System.out.println("Outstanding Shares: "+ j.get("shareOutstanding"));
+				System.out.println("IPO (Initial Public Offering): "+ j.get("ipo"));
 				break;
 			default:
 				
@@ -79,9 +102,44 @@ public class Parser {
 		}
 		
 		
+	}
+	
+	
+	
+	public static void displayCompanies(JSONObject json) {
+		int count = (int) json.get("count");
+		for (int i = 0; i < count; i++) {
+			System.out.println("Company: " + json.get("description"));
+			System.out.println("Symbol: " + json.get("displaySymbol"));
+			System.out.println();
+		}
 		
 	}
 	
+	
+	static double[] findMinMax(JSONArray arr) {
+		double min = 100000;
+		double max=0;
+		for (int i = 0; i < arr.size(); i++){
+			
+			try {
+			double num = ((double) arr.get(i));
+			}
+			catch(ClassCastException e) {
+				continue;
+			}
+			double num = ((double) arr.get(i));
+			if (num>max) {
+				max = num;
+			}
+			if (num<min) {
+				min = num;
+			}
+		}
+		double[] ret = {min,max};
+		return ret;
+	}
+
 	
 	
 }
