@@ -9,6 +9,11 @@ public class UI {
 
 	public static Scanner scanner = new Scanner(System.in);
 	
+	/**
+	 * Asks user if they want to see stock graph and calls graph method
+	 * @param j JSON Object
+	 * @param name of stock ticker
+	 */
 	public static void graphPrompt(org.json.simple.JSONObject j, String name) {
 		System.out.println("Would you like to export this data as a graph?");
 		System.out.println("1. Yes");
