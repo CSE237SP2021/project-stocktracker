@@ -1,9 +1,12 @@
-package Main;
+package src.Main;
 
 public enum ParseOptions {
 	price,
 	change,
 	yearlyPrice,
-	newRequest
+	newRequest,
+	companyInfo,
+	profitLoss
+	
 	
 }

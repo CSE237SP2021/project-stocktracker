@@ -1,30 +1,21 @@
-package testing;
-import Main.*;
+package src.testing;
+import src.Main.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.PrintStream;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-class UITest {
 
-	@Test
-	void test_getOption() {
-		InputStream sysInBackup = System.in; // backup System.in to restore it later
-		ByteArrayInputStream in = new ByteArrayInputStream("1".getBytes());
-		System.setIn(in);
-		assertTrue(UI.getOption() == ParseOptions.price);
-		
-		
-		in = new ByteArrayInputStream("10 \n 1".getBytes());
-		System.setIn(in);
-		assertTrue(UI.getOption() == ParseOptions.price);
-		System.setIn(sysInBackup);
-		
-	}
+@RunWith(Suite.class)
+@Suite.SuiteClasses({  GetOptionChangeUITest.class, GetOptionCompanyInfoUITest.class, GetOptionNewRequest.class, GetOptionPriceUITest.class, GetOptionYearlyPriceUITest.class })
+
+public  class UITest {
 	
-
-
 }

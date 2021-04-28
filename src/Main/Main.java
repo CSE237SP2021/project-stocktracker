@@ -1,20 +1,21 @@
-package Main;
+package  src.Main;
 import org.json.simple.JSONObject;
 
 public class Main {
-
+	public static String currentSymbol = "";
 	
 	public static void main(String[] args) {
+		
 		while (true) {
 			
-			JSONObject json = start();
+			start();
 			while (true) {
 				ParseOptions option = UI.getOption();
 				if (option == ParseOptions.newRequest) {
 					break;
 				}
 				else {
-					Parser.handleOption(json,option);
+					Parser.handleOption(currentSymbol,option);
 					if (!UI.getNextCommand()) {
 						return;
 					}
@@ -25,16 +26,25 @@ public class Main {
 	
 
 
-	public static JSONObject start() {
+	public static String start() {
 		
-		String input = UI.getStockSymbol();
+		ReqOptions reqType = ReqOptions.companyInfo;
+		String symbol = UI.getStockSymbol();
 		
-		String dataString = API.requestData(input, null);
+		String dataString = API.requestData(symbol, reqType);
 		
 		JSONObject json = Parser.convertToJson(dataString);
-		Parser.displayBasicInfo(json);
+		String name = (String) json.get("name");
+		if (UI.proceedToOptions(name)) {
+			currentSymbol = (String) json.get("ticker");
+			return name;
+		}
+		else {
+			start();
+		}
+		return "";
 		
-		return json;
+		
 		
 	}
 	

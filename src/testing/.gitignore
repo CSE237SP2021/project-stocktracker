@@ -3,3 +3,14 @@
 /APITest.class
 /ParserTest.class
 /UITest.class
+/getPriceTest.class
+/NQueensTestSuite.class
+/UITestSuite.class
+/getStockSymbol.class
+/getChange.class
+/getYearlyPriceTest.class
+/GetOptionChangeUITest.class
+/GetOptionPriceUITest.class
+/GetOptionYearlyPriceUITest.class
+/GetOptionCompanyInfoUITest.class
+/GetOptionNewRequest.class
