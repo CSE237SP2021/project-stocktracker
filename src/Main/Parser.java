@@ -118,6 +118,10 @@ public class Parser {
 		
 	}
 	
+	/**
+	 * Prompts user for the amount of shares they own
+	 * @return user input
+	 */
 	public static int getShares() {
 		System.out.println("Enter how many shares you own:");
 		String input;
@@ -130,7 +134,10 @@ public class Parser {
 		}
 	}
 	
-
+	/**
+	 * Prompts user for price they bought shares at
+	 * @return user input
+	 */
 	public static double buyPrice() {
 		System.out.println("Enter buy price:");
 		String input;
@@ -143,6 +150,11 @@ public class Parser {
 		}
 	}
 	
+	/**
+	 * computed the amount of profit or loss on an investment
+	 * @param name of the stock ticker
+	 * @return amount of profit or loss
+	 */
 	public static double calculateProfitLoss(String name) {
 		JSONObject j = null;
 		j = convertToJson(API.requestData(name, ReqOptions.quote));
