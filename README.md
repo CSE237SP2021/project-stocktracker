@@ -14,7 +14,7 @@ No! Everything is working properly. You may have the program output errors but t
 
 **What commands are needed to compile and run your code from the command line (or better yet, provide a script that people can use to run your program!)**
 
-Clone our repository and run the program with either "bash run.sh" or "./run.sh" (you may need to change file permissions with "chmod +rwx run.sh)
+Clone our repository and run the program with either "bash run.sh" or "./run.sh" (you may need to change file permissions with "chmod +rwx run.sh")
 
 **Iteration 2: **
 **What user stories were completed this iteration?**
