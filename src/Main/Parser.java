@@ -56,22 +56,16 @@ public class Parser {
 	 * @param option stock data option selected by the user
 	 */
 	
-
 	public static void handleOption(String name, ParseOptions option) {
 		JSONObject j = null;
 		
 		switch (option) {
 		
-		
 			case price:
-	
-				
 				j = convertToJson(API.requestData(name, ReqOptions.quote));
-				
 				System.out.println("Current Price: $" + j.get("c"));
 				System.out.println("Daily High: $" + j.get("h"));
 				System.out.println("Daily Low: $" + j.get("l"));
-				
 				break;
 			case change:
 				j = convertToJson(API.requestData(name, ReqOptions.quote));
@@ -101,9 +95,9 @@ public class Parser {
 				System.out.println("Outstanding Shares: "+ j.get("shareOutstanding"));
 				System.out.println("IPO (Initial Public Offering): "+ j.get("ipo"));
 				break;
-			case profitLoss:
-						
-				double profitOrLoss=calculateProfitLoss(name);
+			case profitLoss:		
+				double profitOrLoss=extractProfitLossData(name);
+			
 				if(profitOrLoss>=0) {
 					System.out.printf("You made a profit of $%.2f %n", profitOrLoss);
 				}
@@ -118,6 +112,10 @@ public class Parser {
 		
 	}
 	
+	/**
+	 * Prompts user for the amount of shares they own
+	 * @return user input
+	 */
 	public static int getShares() {
 		System.out.println("Enter how many shares you own:");
 		String input;
@@ -130,7 +128,10 @@ public class Parser {
 		}
 	}
 	
-
+	/**
+	 * Prompts user for price they bought shares at
+	 * @return user input
+	 */
 	public static double buyPrice() {
 		System.out.println("Enter buy price:");
 		String input;
@@ -143,16 +144,29 @@ public class Parser {
 		}
 	}
 	
-	public static double calculateProfitLoss(String name) {
-		JSONObject j = null;
-		j = convertToJson(API.requestData(name, ReqOptions.quote));
-		int shares=getShares();
-		double buyPrice=buyPrice();
+	/**
+	 * Calculates how much profit or loss was made on a stock
+	 * @param currentPrice of the stock
+	 * @param shares owned by the user
+	 * @param buyPrice of the user
+	 * @return the profit or loss
+	 */
+	public static double calculateProfitLoss(double currentPrice, int shares, double buyPrice) {
+		
 		double buyValue=shares*buyPrice;
-		double currentPrice=(double)j.get("c");
 		double currentValue=shares*currentPrice;
 		double change=currentValue-buyValue;
 		return change;
+	}
+	
+	public static double extractProfitLossData(String name) {
+		JSONObject j = null;
+		j = convertToJson(API.requestData(name, ReqOptions.quote));
+		double currentPrice=(double)j.get("c");
+		int shares=getShares();
+		double buyPrice=buyPrice();
+		return calculateProfitLoss(currentPrice, shares, buyPrice);
+		
 	}
 	
 	public static void displayCompanies(JSONObject json) {
@@ -166,6 +180,11 @@ public class Parser {
 		
 	}
 	
+	/**
+	 * Finds the min and max of the given JSON array
+	 * @param arr a JSON array
+	 * @return the min and max of the array
+	 */
 	
 	static double[] findMinMax(JSONArray arr) {
 		double min = 100000;
@@ -190,6 +209,4 @@ public class Parser {
 		return ret;
 	}
 
-	
-	
 }

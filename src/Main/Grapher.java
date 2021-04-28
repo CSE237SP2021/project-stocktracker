@@ -36,7 +36,7 @@ public class Grapher {
 		System.out.println(series.getMinY());
 		var dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
-		JFreeChart linechart = ChartFactory.createXYLineChart(name,"Date (Millis since 1/1/1970)","Price",dataset);
+		JFreeChart linechart = ChartFactory.createXYLineChart(name,"Date (Millis since 1/1/1970","Price",dataset);
 		XYPlot plot = linechart.getXYPlot(); 
 		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
 		double min = series.getMinY()-10;
@@ -84,3 +84,4 @@ public class Grapher {
 	}
 	
 }
+
