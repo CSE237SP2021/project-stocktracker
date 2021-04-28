@@ -24,10 +24,10 @@ import java.util.Vector;
 public class Grapher {
 
 	public static void makeGraph(Vector<Double> vals, Vector<Long> dates, String name) {
-		var series = new XYSeries("Price");
+		XYSeries series = new XYSeries("Price");
 		addDates(series, vals, dates);
 		System.out.println(series.getMinY());
-		var dataset = new XYSeriesCollection();
+		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
 		
 		JFreeChart linechart = ChartFactory.createXYLineChart(name,"Date (Millis since 1/1/1970","Price",dataset);
@@ -39,7 +39,7 @@ public class Grapher {
 		
 	}
 	
-	public static void addDates(var series, Vector<Double> vals, Vector<Long> dates) {
+	public static void addDates(XYSeries series, Vector<Double> vals, Vector<Long> dates) {
 		for (int i =0; i<vals.size(); i++) {
 			try {
 			series.add(dates.get(i),vals.get(i));
@@ -61,7 +61,7 @@ public class Grapher {
 		}
 	}
 	
-	public static void setRange(XYPlot plot, var series) {
+	public static void setRange(XYPlot plot, XYSeries series) {
 		NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
 		double min = series.getMinY()-10;
 		if (min < 0) {
