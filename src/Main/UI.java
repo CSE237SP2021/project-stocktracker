@@ -1,11 +1,32 @@
 package src.Main;
 import java.util.Scanner;
 
+import org.json.simple.JSONObject;
+
+
+
 public class UI {
 
 	public static Scanner scanner = new Scanner(System.in);
 	
-	
+	public static void graphPrompt(org.json.simple.JSONObject j, String name) {
+		System.out.println("Would you like to export this data as a graph?");
+		System.out.println("1. Yes");
+		System.out.println("2. No");
+		int input = Integer.parseInt(takeUserInput());
+		if (input == 1) {
+			Grapher.parseData(j, name);
+		}
+		else if (input == 2) {
+			return;
+		}
+		else {
+			System.out.println("Invalid option. Please enter 1 or 2");
+			graphPrompt(j, name);
+		}
+		return;
+		
+	}
 	
 	public static boolean proceedToOptions(String name) {
 		System.out.println("Proceed to request data for " + name+"?");
