@@ -180,6 +180,11 @@ public class Parser {
 		
 	}
 	
+	/**
+	 * Finds the min and max of the given JSON array
+	 * @param arr a JSON array
+	 * @return the min and max of the array
+	 */
 	
 	static double[] findMinMax(JSONArray arr) {
 		double min = 100000;
@@ -204,6 +209,4 @@ public class Parser {
 		return ret;
 	}
 
-	
-	
 }
