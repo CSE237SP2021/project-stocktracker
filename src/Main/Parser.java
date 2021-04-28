@@ -101,13 +101,6 @@ public class Parser {
 				System.out.println("IPO (Initial Public Offering): "+ j.get("ipo"));
 				break;
 			case profitLoss:
-//				j = convertToJson(API.requestData(name, ReqOptions.quote));
-//				int shares=getShares();
-//				double buyPrice=buyPrice();
-//				double buyValue=shares*buyPrice;
-//				double currentPrice=(double)j.get("c");
-//				double currentValue=shares*currentPrice;
-//				double change=Math.abs(buyValue-currentValue);
 						
 				double profitOrLoss=calculateProfitLoss(name);
 				if(profitOrLoss>=0) {
@@ -117,12 +110,10 @@ public class Parser {
 					System.out.printf("You lost $%.2f %n", profitOrLoss*-1);
 				}
 				
-				
 		default:
 				
 			
 		}
-		
 		
 	}
 	
